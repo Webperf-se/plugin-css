@@ -57,9 +57,9 @@ jobs:
           - rule name include 'no-important'
 
           Following files may be touched:
-            - configurations/css-stylelint-standard.json
+            - configurations/standard.json
         assignees: 7h3Rabbit,cockroacher,marcusosterberg
         reviewers: 7h3Rabbit,cockroacher,marcusosterberg
         add-paths: |
-          configurations/css-stylelint-standard.json
-          configurations/css-stylelint-standard-sv.json
+          configurations/standard.json
+          configurations/standard-sv.json
