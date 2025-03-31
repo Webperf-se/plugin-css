@@ -1,0 +1,65 @@
+name: "Update Stylelint rules"
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '**update-stylelint-rules.yml'
+      - 'package.json'
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+            matrix:
+                os: [ubuntu-latest]
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v4
+    - name: Setup python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.13' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+        architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+    - name: Setup dependencies using pip
+      run: pip install -r requirements.txt
+    - name: Setup Node.js (v4 version 20.x)
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+    - name: Setup npm packages
+      run: npm install --omit=dev
+      timeout-minutes: 30
+    - name: Update Stylelint Standard Rules
+      run: python default.py --update-stylelint-rules
+    - name: Create pull request
+      uses: peter-evans/create-pull-request@v7
+      with:
+        commit-message: Update Stylelint Configuration with Latest Rules
+        branch: stylelint-rules-updates
+        title: Update Stylelint Configuration with Latest Rules
+        body: |
+          This PR updates the stylelint configuration to include the latest rules from the most recent version of stylelint.
+          The focus is on rules that prevent the use of:
+          - unknown
+          - deprecated
+          - invalid
+          - vendor-prefixed
+          - empty
+          - non-standard
+          - important declarations
+
+          Specifically done by including all rules where name contains any followed:
+          - rule name include 'no-unknown'
+          - rule name include 'no-deprecated'
+          - rule name include 'no-invalid'
+          - rule name include 'no-vendor'
+          - rule name include 'no-empty'
+          - rule name include 'no-nonstandard'
+          - rule name include 'no-important'
+
+          Following files may be touched:
+            - configurations/css-stylelint-standard.json
+        assignees: 7h3Rabbit,cockroacher,marcusosterberg
+        reviewers: 7h3Rabbit,cockroacher,marcusosterberg
+        add-paths: |
+          configurations/css-stylelint-standard.json
+          configurations/css-stylelint-standard-sv.json
