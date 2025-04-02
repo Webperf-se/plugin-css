@@ -7,10 +7,6 @@ on:
       - main
     paths:
       - "index.js"
-  schedule:
-    #  https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onschedule
-    #  * is a special character in YAML so you have to quote this string
-    - cron: "30 6 1 * *"
 jobs:
   build:
     runs-on: ubuntu-latest
