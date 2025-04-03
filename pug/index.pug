@@ -1,0 +1,31 @@
+
+- let pluginData = pageInfo.data['webperf-plugin-css'].run ? pageInfo.data['webperf-plugin-css'].run : pageInfo.data['webperf-plugin-css'].pageSummary
+
+h1 Issues
+if pluginData.knowledgeData && pluginData.knowledgeData.issues && pluginData.knowledgeData.issues.length > 0
+    table
+        thead
+            tr
+                th URL
+                th Rule
+                th Category
+                th Severity
+                th Text
+                th Line
+                th Column
+        tbody
+            each issue in pluginData.knowledgeData.issues
+                tr
+                    td= issue.url
+                    td= issue.rule
+                    td= issue.category
+                    td= issue.severity
+                    td= issue.text
+                    td= issue.line
+                    td= issue.column
+else
+    p No issues found.
+
+h2 Debug: Plugin Data
+pre
+    code= JSON.stringify(pluginData, null, 3)
