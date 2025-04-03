@@ -1,31 +1,58 @@
-
 - let pluginData = pageInfo.data['webperf-plugin-css'].run ? pageInfo.data['webperf-plugin-css'].run : pageInfo.data['webperf-plugin-css'].pageSummary
 
-h1 Issues
 if pluginData.knowledgeData && pluginData.knowledgeData.issues && pluginData.knowledgeData.issues.length > 0
+    h1 Grouped Issues
+    - let groupedIssues = {};
+    - pluginData.knowledgeData.issues.forEach(issue => {
+    -     let key = `${issue.rule}-${issue.category}-${issue.severity}`;
+    -     if (!groupedIssues[key]) {
+    -         groupedIssues[key] = { rule: issue.rule, category: issue.category, severity: issue.severity, count: 0 };
+    -     }
+    -     groupedIssues[key].count++;
+    - });
+    - const severityOrder = { critical: 4, error: 3, warning: 2, info: 1 };
+    - let sortedGroupedIssues = Object.values(groupedIssues).sort((a, b) => {
+    -     if (severityOrder[b.severity] !== severityOrder[a.severity]) {
+    -         return severityOrder[b.severity] - severityOrder[a.severity];
+    -     }
+    -     return b.count - a.count;
+    - });
     table
         thead
             tr
-                th URL
                 th Rule
                 th Category
                 th Severity
-                th Text
-                th Line
-                th Column
+                th Count
         tbody
-            each issue in pluginData.knowledgeData.issues
+            each value in sortedGroupedIssues
                 tr
-                    td= issue.url
-                    td= issue.rule
-                    td= issue.category
-                    td= issue.severity
-                    td= issue.text
-                    td= issue.line
-                    td= issue.column
-else
-    p No issues found.
+                    td
+                        a(href=`#rule-${value.rule}`)= value.rule
+                    td= value.category
+                    td= value.severity
+                    td= value.count
 
-h2 Debug: Plugin Data
-pre
-    code= JSON.stringify(pluginData, null, 3)
+    // Add tables for each rule
+    each value in sortedGroupedIssues
+        h2(id=`rule-${value.rule}`)= `Rule: ${value.rule}`
+        table
+            thead
+                tr
+                    th URL
+                    th Rule
+                    th Category
+                    th Severity
+                    th Text
+                    th Line
+                    th Column
+            tbody
+                each issue in pluginData.knowledgeData.issues.filter(issue => issue.rule === value.rule)
+                    tr
+                        td= issue.url
+                        td= issue.rule
+                        td= issue.category
+                        td= issue.severity
+                        td= issue.text
+                        td= issue.line
+                        td= issue.column
