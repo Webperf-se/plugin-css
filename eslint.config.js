@@ -5,6 +5,11 @@ export default [
     languageOptions: {
       globals: {
         node: true,
+        es6: true,
+        URL: "readonly"
+      },
+      env: {
+        node: true,
         es6: true
       },
       parserOptions: {
