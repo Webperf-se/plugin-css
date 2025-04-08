@@ -6,7 +6,7 @@ const port = 3000;
 
 export async function startServer() {
   server = createServer((request, response) => {
-    return handler(request, response, { public: './test/data/html/' });
+    return handler(request, response, { public: './test/data/' });
   });
 
   return server.listen(port, () => {});
