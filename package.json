@@ -54,6 +54,8 @@
   },
   "scripts": {
     "test": "ava",
+    "start-server": "serve test/data/html/",
+    "stop-server": "sudo pkill serve",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
