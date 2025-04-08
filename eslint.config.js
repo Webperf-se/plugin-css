@@ -13,10 +13,6 @@ export default [
         sourceType: 'module'
       }
     },
-    env: {
-      node: true,
-      es6: true
-    },
     rules: {
       'require-atomic-updates': 0,
       'no-extra-semi': 0,
