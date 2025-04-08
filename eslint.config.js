@@ -8,14 +8,14 @@ export default [
         es6: true,
         URL: "readonly"
       },
-      env: {
-        node: true,
-        es6: true
-      },
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module'
       }
+    },
+    env: {
+      node: true,
+      es6: true
     },
     rules: {
       'require-atomic-updates': 0,
