@@ -1,4 +1,4 @@
-name: Run Lighthouse plugin on Linux
+name: Run plugin on Linux
 on:
   push:
     branches:
