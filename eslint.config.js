@@ -5,7 +5,8 @@ export default [
     languageOptions: {
       globals: {
         node: true,
-        es6: true
+        es6: true,
+        URL: "readonly"
       },
       parserOptions: {
         ecmaVersion: 'latest',
@@ -20,7 +21,10 @@ export default [
       'unicorn/prevent-abbreviations': 0,
       'unicorn/no-array-reduce': 0,
       'unicorn/prefer-spread': 0
-    }
+    },
+  },
+  {
+    ignores: ["test/*"]
   },
   js.configs.recommended
 ];
