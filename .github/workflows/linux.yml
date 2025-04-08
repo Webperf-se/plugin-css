@@ -35,5 +35,5 @@ jobs:
     - name: Show sitespeed.io version
       run: sitespeed.io --version
     - name: Run tests using css plugin
-      run: sitespeed.io --plugins.add ./lib/index.js https://www.sitespeed.io/
+      run: sitespeed.io --plugins.add ./lib/index.js --xvfb https://www.sitespeed.io/
  
