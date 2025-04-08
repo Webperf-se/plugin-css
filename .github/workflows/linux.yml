@@ -30,10 +30,14 @@ jobs:
         npm install sitespeed.io -g
         cd ../plugin-css
         npm install
+    - name: Start local HTTP server
+      run: (npm run start-server&)
     - name: Lint
       run: npm run lint
     - name: Show sitespeed.io version
       run: sitespeed.io --version
+    - name: Run tests using plugin
+      run: sitespeed.io --plugins.add ./lib/index.js --xvfb -n 1 http://127.0.0.1:3000/dimple/
     - name: Run tests using css plugin
-      run: sitespeed.io --plugins.add ./lib/index.js --xvfb https://www.sitespeed.io/
+      run: sitespeed.io --plugins.add ./lib/index.js --xvfb -n 1 https://www.sitespeed.io/
  
