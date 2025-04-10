@@ -24,7 +24,10 @@ def update_stylelint_rules():
 
     rules = {}
     for rule_name in rule_names:
-        rule_config = True
+        rule_enable = True
+        rule_config = {
+            "severity": "error"
+        }
 
         rule_logic_path = os.path.join(base_directory, 'node_modules', 'stylelint', 'lib', 'rules', rule_name, 'index.mjs')
         if os.path.exists(rule_logic_path):
@@ -36,19 +39,22 @@ def update_stylelint_rules():
                         message = stripped_line[stripped_line.find('`'):stripped_line.rfind('`,')].strip()
                         message = re.sub(r'\$\{[a-zA-Z]+\}', '%s', message).strip('`')
                         message = re.sub(r"([\"][^\"]+[\"])", replacer, message)
-                        rule_config = [True, {"message": message}]
+                        rule_config["message"] = message
                         break
 
         if 'no-unknown' in rule_name:
-            rules[rule_name] = rule_config
+            rules[rule_name] = [rule_enable, rule_config]
         elif 'no-deprecated' in rule_name:
-            rules[rule_name] = rule_config
+            rule_config["severity"] = "warning"
+            rules[rule_name] = [rule_enable, rule_config]
         elif 'no-invalid' in rule_name:
-            rules[rule_name] = rule_config
+            rules[rule_name] = [rule_enable, rule_config]
         elif 'no-empty' in rule_name:
-            rules[rule_name] = rule_config
+            rule_config["severity"] = "warning"
+            rules[rule_name] = [rule_enable, rule_config]
         elif 'no-nonstandard' in rule_name:
-            rules[rule_name] = rule_config
+            rule_config["severity"] = "warning"
+            rules[rule_name] = [rule_enable, rule_config]
 
     # Sort the rules dictionary by key
     rules = dict(sorted(rules.items()))
