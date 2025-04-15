@@ -1,5 +1,8 @@
 - let pluginData = pageInfo.data['webperf-plugin-css'].run ? pageInfo.data['webperf-plugin-css'].run : pageInfo.data['webperf-plugin-css'].pageSummary
 
+h2 CSS
+p We use StyleLint in the background to help you find errors in your styles. plugin-css version: #{pluginData.version}.
+
 if pluginData.knowledgeData && pluginData.knowledgeData.issues && Object.keys(pluginData.knowledgeData.issues).length > 0
     - let issueSets = pluginData.knowledgeData.issues;
     - let issues = Object.values(issueSets);
@@ -11,7 +14,7 @@ if pluginData.knowledgeData && pluginData.knowledgeData.issues && Object.keys(pl
     -     return b.subIssues.length - a.subIssues.length;
     - });
 
-    h1 Issues
+    h3 Issues
     table
         thead
             tr
@@ -40,7 +43,7 @@ if pluginData.knowledgeData && pluginData.knowledgeData.issues && Object.keys(pl
 
     // Add tables for each rule
     each value in sortedIssues
-        h2(id=`rule-${value.rule}`)= `${value.rule}`
+        h4(id=`rule-${value.rule}`)= `${value.rule}`
         p 
             strong Category:
             = value.category
@@ -69,7 +72,7 @@ if pluginData.knowledgeData && pluginData.knowledgeData.issues && Object.keys(pl
                         td= issue.line
                         td= issue.column
 else
-    p No issues found.
+    h3 No issues found.
 
 //- h2 Debug: Plugin Data
 //- pre
