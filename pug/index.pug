@@ -1,7 +1,12 @@
 - let pluginData = pageInfo.data['webperf-plugin-css'].run ? pageInfo.data['webperf-plugin-css'].run : pageInfo.data['webperf-plugin-css'].pageSummary
 
 h2 CSS
-p We use StyleLint in the background to help you find errors in your styles. plugin-css version: #{pluginData.version}.
+p This plugin is used to check your CSS code for errors and enforce coding standards. It can help you catch common mistakes, improve code quality, and ensure consistency across your stylesheets.
+    br
+    span Using plugin-css v#{pluginData.version} 
+    span with dependencies: 
+        each version, name in pluginData.dependencies
+            span #{name} v#{version}, 
 
 if pluginData.knowledgeData && pluginData.knowledgeData.issues && Object.keys(pluginData.knowledgeData.issues).length > 0
     - let issueSets = pluginData.knowledgeData.issues;
