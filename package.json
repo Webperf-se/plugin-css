@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "jsdom": "26.1.0",
-    "stylelint": "16.18.0",
+    "stylelint": "16.19.1",
     "@sitespeed.io/plugin": "1.0.0"
   },
   "scripts": {
