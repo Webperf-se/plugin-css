@@ -1,6 +1,6 @@
 {
   "name": "plugin-css",
-  "version": "2025.6.3",
+  "version": "2025.6.4",
   "type": "module",
   "exports": "./lib/index.js",
   "publishConfig": {
