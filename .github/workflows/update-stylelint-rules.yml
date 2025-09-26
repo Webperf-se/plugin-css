@@ -62,4 +62,3 @@ jobs:
         reviewers: 7h3Rabbit,cockroacher,marcusosterberg
         add-paths: |
           configurations/standard.json
-          configurations/standard-sv.json
