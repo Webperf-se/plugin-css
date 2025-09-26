@@ -106,6 +106,13 @@
                 "severity": "error"
             }
         ],
+        "media-type-no-deprecated": [
+            true,
+            {
+                "severity": "warning",
+                "message": "Unexpected deprecated media type \u201c%s\u201d"
+            }
+        ],
         "named-grid-areas-no-invalid": [
             true,
             {
@@ -130,6 +137,12 @@
                 "severity": "error"
             }
         ],
+        "no-invalid-position-declaration": [
+            true,
+            {
+                "severity": "error"
+            }
+        ],
         "no-unknown-animations": [
             true,
             {
@@ -149,6 +162,13 @@
             {
                 "severity": "error",
                 "message": "Unexpected unknown custom property \u201c%s\u201d"
+            }
+        ],
+        "property-no-deprecated": [
+            true,
+            {
+                "severity": "warning",
+                "message": "Unexpected deprecated property \u201c%s\u201d"
             }
         ],
         "property-no-unknown": [
