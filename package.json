@@ -44,7 +44,7 @@
     "serve-handler": "6.1.6"
   },
   "dependencies": {
-    "jsdom": "27.1.0",
+    "jsdom": "27.3.0",
     "stylelint": "16.26.1",
     "@sitespeed.io/plugin": "1.0.0"
   },
