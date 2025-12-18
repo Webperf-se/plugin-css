@@ -31,7 +31,7 @@ jobs:
     - name: Update Stylelint Standard Rules
       run: python tools/update_stylelint.py
     - name: Create pull request
-      uses: peter-evans/create-pull-request@v7
+      uses: peter-evans/create-pull-request@v8
       with:
         commit-message: Update Stylelint Configuration with Latest Rules
         branch: stylelint-rules-updates
