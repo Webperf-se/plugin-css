@@ -39,15 +39,15 @@
     ]
   },
   "devDependencies": {
-    "eslint": "10.0.3",
+    "eslint": "10.4.0",
     "@eslint/js": "10.0.1",
     "serve": "14.2.6",
     "serve-handler": "6.1.7"
   },
   "dependencies": {
-    "jsdom": "29.0.0",
+    "jsdom": "29.1.1",
     "stylelint": "17.11.1",
-    "@sitespeed.io/plugin": "1.0.0"
+    "@sitespeed.io/plugin": "1.0.2"
   },
   "scripts": {
     "start-server": "serve test/data/",
