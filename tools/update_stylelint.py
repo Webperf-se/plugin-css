@@ -43,6 +43,14 @@ def update_stylelint_rules():
                         break
 
         if 'no-unknown' in rule_name:
+            # Unknown custom properties/media reference values that are
+            # frequently defined where static analysis can't see them (set at
+            # runtime via JS, in inline style attributes, on a page that wasn't
+            # crawled, or built at compile time by PostCSS). A missing one
+            # degrades gracefully to the initial/inherited value rather than
+            # producing invalid CSS, so report it as a warning, not an error.
+            if rule_name in ('no-unknown-custom-properties', 'no-unknown-custom-media'):
+                rule_config["severity"] = "warning"
             rules[rule_name] = [rule_enable, rule_config]
         elif 'no-deprecated' in rule_name:
             rule_config["severity"] = "warning"
