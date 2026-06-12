@@ -6,7 +6,11 @@ export default [
       globals: {
         node: true,
         es6: true,
-        URL: "readonly"
+        URL: "readonly",
+        fetch: "readonly",
+        AbortController: "readonly",
+        setTimeout: "readonly",
+        clearTimeout: "readonly"
       },
       parserOptions: {
         ecmaVersion: 'latest',
