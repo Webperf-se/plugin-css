@@ -156,14 +156,14 @@
         "no-unknown-custom-media": [
             true,
             {
-                "severity": "error",
+                "severity": "warning",
                 "message": "Unknown custom media query \u201c%s\u201d"
             }
         ],
         "no-unknown-custom-properties": [
             true,
             {
-                "severity": "error",
+                "severity": "warning",
                 "message": "Unknown custom property \u201c%s\u201d"
             }
         ],
