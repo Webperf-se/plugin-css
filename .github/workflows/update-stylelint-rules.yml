@@ -5,8 +5,14 @@ on:
     paths:
       - '**update-stylelint-rules.yml'
       - 'package.json'
+permissions:
+  contents: read
+
 jobs:
   build:
+    permissions:
+      contents: write
+      pull-requests: write
     runs-on: ${{ matrix.os }}
     strategy:
             matrix:
