@@ -8,6 +8,13 @@
                 "message": "Unknown annotation \u201c%s\u201d"
             }
         ],
+        "at-charset-rule-no-invalid": [
+            true,
+            {
+                "severity": "error",
+                "message": "Invalid \u201c@charset\u201d rule, %s"
+            }
+        ],
         "at-rule-descriptor-no-unknown": [
             true,
             {
@@ -72,8 +79,7 @@
         "declaration-property-value-no-unknown": [
             true,
             {
-                "severity": "error",
-                "message": "Unknown value \u201c%s\u201d for property \u201c%s\u201d"
+                "severity": "error"
             }
         ],
         "function-linear-gradient-no-nonstandard-direction": [
@@ -228,6 +234,13 @@
             {
                 "severity": "error",
                 "message": "Unknown unit \u201c%s\u201d"
+            }
+        ],
+        "value-no-invalid": [
+            true,
+            {
+                "severity": "error",
+                "message": "Invalid value \u201c%s\u201d${reason ? `, %s` : ''}"
             }
         ]
     }
